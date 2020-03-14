@@ -1,6 +1,8 @@
 
 import 'package:geolocator/geolocator.dart';
 
+Geolocator geolocator = Geolocator();
+
 checkGPSPermissions() async {
   GeolocationStatus geolocationStatus = await Geolocator().checkGeolocationPermissionStatus();
 
@@ -16,5 +18,5 @@ requestGPSPermissions() async {
 }
 
 getGPSCoordinates() async {
-  return await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  return await geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 }

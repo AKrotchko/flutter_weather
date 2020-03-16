@@ -3,8 +3,6 @@ import 'package:flutter_weather/ui/widgets/current_weather_display.dart';
 
 class HourlyWeatherDisplay extends StatelessWidget {
 
-
-
   @override
   Widget build(BuildContext context) {
     return Row(

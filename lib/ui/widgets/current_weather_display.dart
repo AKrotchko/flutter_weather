@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/services/api/weather_api.dart';
 import 'package:flutter_weather/services/gps/geo_services.dart';
+import 'package:flutter_weather/services/images/weather_image.dart';
 import 'package:flutter_weather/ui/widgets/hourly_weather_display.dart';
 import 'package:flutter_weather/ui/widgets/todays_weather_display.dart';
 import 'package:flutter_weather/ui/widgets/weekly_weather_display.dart';
@@ -57,6 +58,7 @@ class _CurrentWeatherDisplayState extends State<CurrentWeatherDisplay> {
             ],
           )
         : Container(
+      color: Color(WeatherImage().getWeatherColor(weatherApi.currentWeather.weather[0].icon)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -66,9 +68,9 @@ class _CurrentWeatherDisplayState extends State<CurrentWeatherDisplay> {
                     Padding(
                       padding: EdgeInsets.all(15.0),
                       child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
+//                        shape: RoundedRectangleBorder(
+//                          borderRadius: BorderRadius.circular(30.0),
+//                        ),
                         color: isCurrentSelected ? Colors.black : Colors.white,
                         onPressed: (){
                           setState(() {
@@ -81,9 +83,9 @@ class _CurrentWeatherDisplayState extends State<CurrentWeatherDisplay> {
                     Padding(
                       padding: EdgeInsets.all(15.0),
                       child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
+//                        shape: RoundedRectangleBorder(
+//                          borderRadius: BorderRadius.circular(30.0),
+//                        ),
                         color: isCurrentSelected ? Colors.white : Colors.black,
                         onPressed: (){
                           setState(() {

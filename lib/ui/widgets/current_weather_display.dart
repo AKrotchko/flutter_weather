@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_weather/services/api/weather_api.dart';
 import 'package:flutter_weather/services/gps/geo_services.dart';
 import 'package:flutter_weather/ui/widgets/hourly_weather_display.dart';
+import 'package:flutter_weather/ui/widgets/todays_weather_display.dart';
+import 'package:flutter_weather/ui/widgets/weekly_weather_display.dart';
 import 'package:geolocator/geolocator.dart';
 
 WeatherApi weatherApi = WeatherApi();
@@ -12,6 +14,9 @@ class CurrentWeatherDisplay extends StatefulWidget {
 }
 
 class _CurrentWeatherDisplayState extends State<CurrentWeatherDisplay> {
+
+  bool isCurrentSelected = true;
+
   _parentState() {
     setState(() {});
   }
@@ -55,58 +60,44 @@ class _CurrentWeatherDisplayState extends State<CurrentWeatherDisplay> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                ListTile(
-                  title: Text(
-                      '${weatherApi.currentWeather.name} - ${timeOfWeather()}'),
-                  subtitle:
-                      Text(weatherApi.currentWeather.weather[0].description),
-                  trailing: IconButton(
-                    icon: Icon(Icons.file_download),
-                    onPressed: () async {
-                      //ToDo - Change icon to spinner while this is happening, and prevent further taps.
-                      Position position = await getGPSCoordinates();
-                      weatherApi.getCurrentWeather(
-                          position.latitude, position.longitude, _parentState);
-                      weatherApi.getFiveDayWeather(position.latitude, position.longitude, _parentState);
-                    },
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: FlatButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        color: isCurrentSelected ? Colors.black : Colors.white,
+                        onPressed: (){
+                          setState(() {
+                            isCurrentSelected = true;
+                          });
+                        },
+                        child: Text('Current Weather', style: TextStyle(color: isCurrentSelected ? Colors.white : Colors.black)),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: FlatButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        color: isCurrentSelected ? Colors.white : Colors.black,
+                        onPressed: (){
+                          setState(() {
+                            isCurrentSelected = false;
+                          });
+                        },
+                        child: Text('5-Day Forecast', style: TextStyle(color: isCurrentSelected ? Colors.black : Colors.white)),
+                      ),
+                    ),
+                  ],
                 ),
-                Center(
-                  child: Image.network(
-                      'http://openweathermap.org/img/wn/${weatherApi.currentWeather.weather[0].icon}.png'),
-                ),
-                Center(
-                  child:
-                      Text(getTemperature(weatherApi.currentWeather.main.temp)),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: Center(
-                    child: Text(
-                        'Feels like ${getTemperature(weatherApi.currentWeather.main.feelsLike)}'),
-                  ),
-                ),
-                Center(
-                  child: HourlyWeatherDisplay()
-                )
+                isCurrentSelected ? TodaysWeatherDisplay(_parentState) : WeeklyWeatherDisplay()
               ],
             ),
           );
-  }
-
-  getTemperature(double temp) {
-    return '${temp.round().toString()} °F';
-  }
-
-  // Note that the server caches responses, so we can't always fetch a new weather response.
-  timeOfWeather() {
-    DateTime dt = DateTime.fromMillisecondsSinceEpoch(
-        weatherApi.currentWeather.dt * 1000);
-    if (dt.hour > 12) {
-      print('${dt.hour}:${dt.minute}');
-      return '${dt.hour - 12}:${dt.minute}pm';
-    } else {
-      return '${dt.hour}:${dt.minute}am';
-    }
   }
 }

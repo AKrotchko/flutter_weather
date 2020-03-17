@@ -1,8 +1,17 @@
 # flutter_weather
 
-This project is a demonstration of my ability to design and write a flutter application in a short period of time. As expected, I did not finish, but I learned a lot, and have a lot to reflect on. I will share some of that here.
+This project is a demonstration of my ability to design and write a flutter application in a short period of time. Not all of the requirements were completed. I will highlight what was completed and what was not.
 
 ![app 1](https://i.imgur.com/VAcWHUw.png) ![app 2](https://i.imgur.com/JExQekG.png)
+
+## How to run the application
+
+1. [Install Flutter](https://flutter.dev/docs/get-started/install)
+2. Set up your IDE [Android Studio and IntelliJ](https://flutter.dev/docs/get-started/editor?tab=androidstudio) or [Visual Studio Code](https://flutter.dev/docs/get-started/editor?tab=vscode)
+3. Clone the repository
+4. Navigate to the repository root
+5. Run 'flutter pub get'
+6. Run 'flutter run'
 
 ## The Criteria
 
@@ -61,4 +70,4 @@ At the end of it, I wish I would have prioritized slightly differently. There wa
 
 Unfortunately, the current health crisis made my time rather short, and the original ask was about five and a half days. If I had a bit more free time, I think I could button this up pretty nicely.
 
-
+Please feel free to reach out to me for any questions or follow-up. This project did not go as smoothly as I had hoped, but I'm glad I did it.

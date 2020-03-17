@@ -33,7 +33,7 @@ I did a really extensive set of designs to think through UI simplicity. I wanted
 
 ![design 2](https://i.imgur.com/G9kyVSu.png)
 
-[The Full Design](../blob/master/assets/design/Flutter Weather.fig) can be opened in Figma.
+[The Full Design](https://github.com/AKrotchko/flutter_weather/blob/develop/assets/design/Flutter%20Weather.fig) can be opened in Figma.
 
 I was able to successfully utilize the weather API from openweathermap.org, but it seems as though the only APIs that are available are Current weather and 5 Day/3 Hour forecasts. All other available APIs require paid, developer, enterprise, etc. type of accounts. So these were the two APIs I utilized.
 

@@ -71,7 +71,7 @@ class _CurrentWeatherDisplayState extends State<CurrentWeatherDisplay> {
 //                        shape: RoundedRectangleBorder(
 //                          borderRadius: BorderRadius.circular(30.0),
 //                        ),
-                        color: isCurrentSelected ? Colors.black : Colors.white,
+                        color: isCurrentSelected ? Colors.black : Colors.white30,
                         onPressed: (){
                           setState(() {
                             isCurrentSelected = true;
@@ -86,7 +86,7 @@ class _CurrentWeatherDisplayState extends State<CurrentWeatherDisplay> {
 //                        shape: RoundedRectangleBorder(
 //                          borderRadius: BorderRadius.circular(30.0),
 //                        ),
-                        color: isCurrentSelected ? Colors.white : Colors.black,
+                        color: isCurrentSelected ? Colors.white30 : Colors.black,
                         onPressed: (){
                           setState(() {
                             isCurrentSelected = false;

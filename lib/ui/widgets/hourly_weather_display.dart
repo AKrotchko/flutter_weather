@@ -36,8 +36,6 @@ class OneHourWeather extends StatelessWidget {
 ////      weatherApi.getFiveDayWeather(latitude, longitude)
 //    }
 
-    print(weatherApi.fiveDayForecast.list[hour].dt);
-
     DateTime current = DateTime.fromMillisecondsSinceEpoch(weatherApi.fiveDayForecast.list[hour].dt * 1000);
 
     String currentTime = '';

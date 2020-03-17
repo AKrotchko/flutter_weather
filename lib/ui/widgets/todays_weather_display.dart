@@ -16,7 +16,7 @@ class TodaysWeatherDisplay extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: Container(
-        color: Colors.white,
+        color: Colors.white30,
         child: Column(
           children: <Widget>[
             ListTile(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_weather/services/gps/geo_services.dart';
+import 'package:flutter_weather/services/storage/storage_service.dart';
+import 'package:flutter_weather/ui/favorites_screen.dart';
 import 'package:flutter_weather/ui/widgets/current_weather_display.dart';
-import 'package:geolocator/geolocator.dart';
+
+StorageService storageService = StorageService();
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   PageController _pageController;
   List<Widget> _widgetOptions = <Widget>[
     Center(child: CurrentWeatherDisplay()),
-    Center(child: Text('Index 1: Favorites')),
+    Center(child: FavoritesList()),
     Center(child: Text('Index 2: Alerts'))
   ];
 
@@ -33,6 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _pageController = PageController();
+
+    storageService.initializePreferences();
   }
 
   @override

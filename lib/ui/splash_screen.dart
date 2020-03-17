@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/routes/fade_route.dart';
 import 'package:flutter_weather/ui/home_screen.dart';
@@ -33,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.blue[700],
+        backgroundColor: Colors.white30,
         body: Container(
           child: Center(
             child: Image.asset('assets/images/icon_logo.png', width: MediaQuery.of(context).size.width / 2, height: MediaQuery.of(context).size.width / 2),
